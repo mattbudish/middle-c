@@ -1,7 +1,9 @@
 FROM ubuntu:16.10
 
-# port 5858 = node debugger, 63080 = HTTP
-EXPOSE 5858 63080
+MAINTAINER mattbudish
+
+# port 9229 = node inspect, 63080 = HTTP
+EXPOSE 9229 80
 
 # Set development environment as default
 ENV NODE_ENV development
@@ -13,12 +15,9 @@ RUN apt-get update -q  \
   curl \
   git \
   build-essential \
-  python2.7 \
+  python \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Setup python
-RUN ln -s /usr/bin/python2.7 /usr/bin/python
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
