@@ -1,12 +1,12 @@
 {
   "name": "middle-c",
   "version": "0.0.0",
-  "description": "Bind C/C++ to other technologies.",
+  "description": "A collection tools to get C/C++ in on the middleware action.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Matt Budish",
+  "author": "mtbudish@gmail.com",
   "license": "MIT",
   "dependencies": {
     "node-libclang": "git+https://github.com/mattbudish/node-libclang.git"
