@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER mattbudish
+LABEL author="Matt Budish <mtbudish@gmail.com>"
 
 # port 9229 = node inspect, 63080 = HTTP
 EXPOSE 9229 80
@@ -37,7 +37,5 @@ RUN npm install --quiet -g node-gyp
 # Install middle-c
 RUN mkdir -p /opt/middle-c
 WORKDIR /opt/middle-c
-COPY package.json /opt/middle-c/package.json
-RUN npm install --quiet && npm cache clean
-
-CMD bash
+COPY . /opt/middle-c/
+RUN npm install --quiet && npm cache verify

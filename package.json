@@ -1,14 +1,43 @@
 {
   "name": "middle-c",
-  "version": "0.0.0",
-  "description": "A collection tools to get C/C++ in on the middleware action.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "mtbudish@gmail.com",
+  "version": "0.1.0",
+  "description": "Generate JSON Bindings from header file",
+  "private": true,
+  "keywords": [
+    "libclang",
+    "json",
+    "bindings"
+  ],
+  "author": "Matt Budish <mtbudish@gmail.com>",
   "license": "MIT",
+  "main": "lib/middle-c.js",
+  "bin": {
+    "middle-c-cli": "bin/middle-c-cli.js"
+  },
+  "scripts": {
+    "test": "mocha test",
+    "serve": "node server"
+  },
   "dependencies": {
-    "node-libclang": "git+https://github.com/mattbudish/node-libclang.git"
+    "commander": "^2.12.2",
+    "express": "^4.16.2",
+    "js-beautify": "^1.7.4",
+    "libclang": "0.0.11",
+    "lodash": "^4.17.4",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.13.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^4.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattbudish/middle-c.git"
   }
 }

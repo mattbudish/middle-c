@@ -1,0 +1,11 @@
+version: '3'
+services:
+    middle-c:
+        image: "mattbudish/middle-c"
+        build:
+          context: .
+        volumes:
+            - "./examples:/opt/code"
+        ports:
+            - "8080:80"
+        command: ["/usr/bin/node", "server.js", "-d", "/opt/code"]
