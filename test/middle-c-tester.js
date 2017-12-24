@@ -1,11 +1,15 @@
 const mc = require('../lib/middle-c')
-const expect = require('chai').expect
+const chai = require('chai')
+const chaiAsPromised = require('chai-as-promised')
+
+chai.use(chaiAsPromised)
+const expect = chai.expect
+const should = chai.should()
 
 describe('Main Test Suite', () => {
   it('Simple Test Case', () => {
     const opts = {
       filename: 'test/driver.h',
-      module: 'Module',
       includes: ['examples'],
       compiler_args: ['-std=c++11', '-x', 'c++'],
       single_file: true
@@ -26,9 +30,6 @@ describe('Main Test Suite', () => {
         flagStatus: {
           type: 'integer',
           format: 'int32'
-        },
-        catchPhrase: {
-            type: 'string'
         },
         driversCar: {
           type: 'object',
@@ -61,5 +62,26 @@ describe('Main Test Suite', () => {
       unmapped: []
     }
     return expect(mc.generate(opts)).to.deep.equal(output)
+  })
+
+  it('Async String Test Case', () => {
+    const opts = {
+      filename: 'test/hero.h',
+      includes: ['examples'],
+      compiler_args: ['-std=c++11', '-x', 'c++'],
+      single_file: true
+    }
+
+    const serialized = {
+      title: 'SuperHero',
+      type: 'object',
+      properties: {
+        catchPhrase: {
+          type: 'string'
+        }
+      }
+    }
+
+    return mc.asyncGenerate(opts).should.eventually.deep.equal(serialized)
   })
 })

@@ -19,7 +19,6 @@ const modelsRootPath = program.directory || '.'
 
 var opts = {
   filename: path.join(modelsRootPath, program.args[0]),
-  module: 'Model',
   single_file: true,
   compiler_args: [
     '-Wno-pragma-once-outside-header',
@@ -33,4 +32,11 @@ if (program.include) {
   opts.compiler_args.push('-I' + program.include)
 }
 
-console.log(JSON.stringify(middleC.generate(opts).serialized, null, 4))
+(async () => {
+  try {
+    let result = await middleC.asyncGenerate(opts)
+    console.log(JSON.stringify(result, null, 4))
+  } catch (err) {
+    console.error(err)
+  }
+})()

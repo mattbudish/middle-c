@@ -21,7 +21,6 @@ app.use(morgan('short'))
   .get('/api/:fileName', (req, res) => {
     const opts = {
       filename: path.join(modelsRootPath, req.params.fileName),
-      module: 'Model',
       single_file: true,
       compiler_args: [
         '-Wno-pragma-once-outside-header',
